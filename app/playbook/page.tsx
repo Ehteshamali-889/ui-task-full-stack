@@ -24,7 +24,9 @@ export default function Home() {
   ];
 
   const renderExerciseCard = () => (
-    <div className="border rounded p-3 bg-white shadow-sm space-y-2">
+    <div className="bg-white p-3 shadow-sm space-y-4">
+      {" "}
+      {/* Adjusted background and removed border */}
       {/* First row: Regular Set, + (Menu), Circuit (Transfer icons) */}
       <div className="flex justify-between items-center">
         <div className="bg-gray-200 text-sm px-2 py-1 rounded font-medium">
@@ -33,12 +35,10 @@ export default function Home() {
         <div className="flex items-center space-x-3">
           <Menu className="w-4 h-4 text-gray-500 cursor-pointer" />
           <div className="flex items-center space-x-1 text-gray-500">
-            <ArrowUp className="w-4 h-4" />
-            <ArrowDown className="w-4 h-4" />
+            <Image src="/Replace.png" alt="Replace" width={16} height={16} />
           </div>
         </div>
       </div>
-
       {/* Second row: A, Bench Press, sets, etc. */}
       <div className="grid grid-cols-8 gap-2 text-sm items-center">
         <div className="col-span-1 font-medium">A</div>
@@ -50,8 +50,7 @@ export default function Home() {
         <div className="col-span-1 flex justify-between items-center">
           <Trash className="w-4 h-4 text-gray-500 cursor-pointer" />
           <div className="flex items-center space-x-1 text-gray-500">
-            <ArrowUp className="w-4 h-4" />
-            <ArrowDown className="w-4 h-4" />
+            <Image src="/Replace.png" alt="Replace" width={16} height={16} />
           </div>
         </div>
       </div>
@@ -61,13 +60,17 @@ export default function Home() {
   const renderDay = (day: number, label: string) => (
     <div key={day} className="mb-6">
       {/* Day Header */}
-      <div className="flex justify-between items-center bg-purple-100 px-4 py-2 rounded text-sm font-medium mb-2">
-        <div>Day {day} - {label}</div>
+      <div
+        className="flex justify-between items-center px-4 py-2 rounded text-sm font-medium mb-2"
+        style={{ backgroundColor: "#cbcdeb" }}
+      >
+        <div>
+          Day {day} - {label}
+        </div>
         <div className="flex space-x-2 text-gray-500">
           <Menu className="w-4 h-4 cursor-pointer" />
           <div className="flex space-x-1 items-center">
-            <ArrowUp className="w-4 h-4" />
-            <ArrowDown className="w-4 h-4" />
+            <Image src="/Replace.png" alt="Replace" width={16} height={16} />
           </div>
         </div>
       </div>
@@ -112,7 +115,7 @@ export default function Home() {
         className="bg-white flex items-center px-6 py-4 shadow-md"
         style={{ minHeight: "10vh", maxHeight: "80px" }}
       >
-        <div className="w-28 h-10 relative mr-4">
+        <div className="w-50 h-30 relative mr-4">
           <Image src="/logo.png" alt="Logo" fill className="object-contain" />
         </div>
       </header>
@@ -128,8 +131,12 @@ export default function Home() {
                   key={i}
                   onClick={() => setSelectedWeek(i + 1)}
                   className={`px-4 py-2 bg-white rounded shadow cursor-pointer font-semibold ${
-                    selectedWeek === i + 1 ? "bg-blue-100" : ""
+                    selectedWeek === i + 1 ? "text-white" : ""
                   }`}
+                  style={{
+                    backgroundColor:
+                      selectedWeek === i + 1 ? "#6367ef" : "white",
+                  }}
                 >
                   Week {i + 1}
                 </div>
@@ -172,10 +179,10 @@ export default function Home() {
         {/* Right Section */}
         <div className="w-[25%] p-6 space-y-4">
           <div className="flex justify-end space-x-3">
-            <button className="px-4 py-2 border border-gray-400 rounded">
+            <button className="px-4 py-2 border border-[#6367ef] rounded text-[#6367ef]">
               Re-generate
             </button>
-            <button className="px-4 py-2 bg-black text-white rounded">
+            <button className="px-4 py-2 bg-[#6367ef] text-white rounded">
               Export
             </button>
           </div>
@@ -191,10 +198,7 @@ export default function Home() {
             />
             <div className="space-y-2">
               {exercises.map((exercise, i) => (
-                <div
-                  key={i}
-                  className="p-3 rounded border-b border-gray-200"
-                >
+                <div key={i} className="p-3 rounded border-b border-gray-200">
                   {exercise}
                 </div>
               ))}
@@ -205,12 +209,13 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="bg-white p-4 shadow-md flex justify-center space-x-3">
-        <button className="px-4 py-2 border border-gray-400 rounded">
-          Reset to Default
-        </button>
-        <button className="px-4 py-2 bg-black text-white rounded">
-          Apply Changes
-        </button>
+      <button className="px-4 py-2 border border-[#6367ef] rounded text-[#6367ef]">
+  Reset to Default
+</button>
+<button className="px-4 py-2 bg-[#6367ef] text-white rounded">
+  Apply Changes
+</button>
+
       </footer>
     </div>
   );
