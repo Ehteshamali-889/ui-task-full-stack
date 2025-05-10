@@ -96,8 +96,9 @@ export default function Home() {
       return;
     }
   
-    console.log("Generate Program Clicked", formData);
-    toast.success("Program ready to be generated!");
+    if (typeof window !== "undefined") {
+      window.location.href = '/playbook';
+    }
   };  
 
   return (
